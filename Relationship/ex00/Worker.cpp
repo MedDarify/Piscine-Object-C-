@@ -24,7 +24,6 @@ void Worker::giveTool(Tool *tool)
 {
 	if (!tool)
 		return;
-
 	if (tool->getCurrentWorker())
 		tool->getCurrentWorker()->takeTool(tool);
 	this->_tools.push_back(tool);
@@ -36,7 +35,6 @@ void Worker::takeTool(Tool *tool)
 {
 	if (!tool)
 		return;
-
 	std::list<Tool *>::iterator it = std::find(_tools.begin(), _tools.end(), tool);
 	if (it != _tools.end())
 	{

@@ -1,0 +1,113 @@
+# OOP Relationships in C++98: A Practical Demonstration
+
+`This project is a practical, hands-on implementation of the four fundamental relationship types in Object-Oriented Programming (OOP). [cite_start]The code is written in C++98, adhering to the specifications of the "Module 01 - Relationship" PDF exercise[cite: 2].`
+
+`The main goal is to demonstrate how different classes and objects can interact, own each other, or collaborate, with a focus on **lifetime management** and **design patterns**.`
+
+## Core Concepts Implemented
+`[cite_start]This project successfully implements the four mandatory exercises from the subject[cite: 50]:`
+
+### 1. Composition (IV.1)
+* **Concept:** 
+    A strong "owns-a" or "part-of" relationship. 
+    The lifetime of the *part* (the member object) is tied to the lifetime of 
+    the *whole* (the containing class).
+* [cite_start]**Implementation:** 
+    The `Worker` class is **composed** of `Position` and `Statistic` structs[cite: 70]. 
+    These structs are declared as direct member variables. 
+    When a `Worker` object is created, its `Position` and `Statistic` are also created.         [cite_start]When the `Worker` is destroyed, its `Position` and `Statistic` members are automatically destroyed[cite: 71].
+
+### 2. Aggregation (IV.2)
+* **Concept:** 
+    A flexible "has-a" relationship. 
+    The *whole* (e.g., `Worker`) has a reference or pointer 
+    to the *part* (e.g., `Tool`), but their lifetimes are independent.
+* [cite_start]**Implementation:** 
+    A `Worker` can be given a `Shovel` (and later, other `Tool`s) 
+    The `Worker` holds a pointer to the `Tool`. 
+    [cite_start]As required, if the `Worker` is destroyed, 
+    the `Tool` **is not** destroyed[cite: 77]. [cite_start]
+    The code also ensures that a tool can be taken from one 
+    worker and given to another[cite: 82].
+
+### 3. Inheritance (IV.3)
+* **Concept:**
+    An "is-a" relationship. A specialized class (child) 
+    derives from a general-purpose class (parent).
+* [cite_start]**Implementation:** 
+    An abstract base class `Tool` is created with a pure virtual `use()` method. 
+    The `Shovel` and `Hammer` classes both **inherit** from `Tool` 
+    and provide concrete implementations of `use()`[cite: 94, 95]. 
+    This allows the `Worker` to hold a list of `Tool*` 
+    pointers and treat all tools polymorphically.
+
+### 4. Association (IV.4)
+* **Concept:** 
+    A "uses-a" or "collaborates-with" relationship. 
+    Two or more classes are aware of each other and interact, 
+    but their lifetimes are completely independent.
+* **Implementation:** 
+    The `Worker` and `Workshop` classes demonstrate association. 
+    [cite_start]A `Workshop` can register (and release) 
+    multiple `Worker`s [cite: 104][cite_start], and a 
+    `Worker` can be registered to multiple `Workshop`s simultaneously[cite: 105]. 
+    [cite_start]They hold pointers to each other to collaborate 
+    (e.g., `Workshop::executeWorkDay()` calls `work()` on each 
+    registered `Worker` [cite: 107, 106]), 
+    but destroying one does not affect the other.
+
+## Class Relationship Schema (UML-style)
+**Key:**
+    `This diagram illustrates the relationships between all entities in the project.`
+**Key:**
+* **`A <◆-- B` (Composition):** B *owns* A. A's lifetime is tied to B.
+* **`A --◇ B` (Aggregation):** B *has* an A. A's lifetime is independent.
+* **`A <|-- B` (Inheritance):** B *is an* A.
+* **`A --- B` (Association):** A and B *know about* each other.
+* **`1`, `0..*` (Multiplicity):** "One" or "Zero-to-Many".
+
+## How to Build and Run
+
+### Prerequisites
+* A C++ compiler (e.g., `g++`, `clang++`)
+* `make`
+
+### Compilation
+`The project is configured to compile using c++ with the -Wall -Wextra -Werror -std=c++98`
+`flags, as required by the subject.`
+
+1.  **Build the project:**
+    ```sh
+    make
+    ```
+    This will create the executable named `relationships`.
+
+2.  **Other `Makefile` rules:**
+    * `make clean`: Removes the intermediate object files (`.o`).
+    * `make fclean`: Removes object files and the `relationships` executable.
+    * `make re`: Runs `fclean` and then `all`.
+
+### Running the Demonstration
+`Execute the compiled program to see the output logs from all constructors, destructors, and methods, which demonstrate the relationships and object lifetimes in action.`
+
+```sh
+./relationships
+
+Code Structure
+.
+├── Makefile
+├── *.hpp           # Header files for all classes/structs
+│   ├── Hammer.hpp
+│   ├── Position.hpp
+│   ├── Shovel.hpp
+│   ├── Statistic.hpp
+│   ├── Tool.hpp
+│   ├── Worker.hpp
+│   └── Workshop.hpp
+├── *.cpp           # Source/implementation files
+│   ├── Hammer.cpp
+│   ├── Shovel.cpp
+│   ├── Tool.cpp
+│   ├── Worker.cpp
+│   └── Workshop.cpp
+└── main.cpp        # Main executable to demonstrate all features
