@@ -5,22 +5,21 @@
 
 #include <iostream>
 
-class Worker; // Forward declaration is still needed
+class Worker;
 
-// IV.3 Inheritance
 class Tool
 {
 protected:
     int numberOfUses;
-    Worker *currentWorker; 
+    Worker *currentWorker;
 
 public:
-    Tool();          
-    virtual ~Tool(); 
+    Tool();
+    virtual ~Tool();
 
-    virtual void use() = 0; 
-    void setCurrentWorker(Worker *worker); 
-    Worker *getCurrentWorker() const;      
+    virtual void use() = 0;
+    void setCurrentWorker(Worker *worker);
+    Worker *getCurrentWorker() const;
 };
 
 #endif

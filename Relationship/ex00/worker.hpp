@@ -4,37 +4,41 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include "Position.hpp"  
-#include "Statistic.hpp" 
+#include "Position.hpp"
+#include "Statistic.hpp"
 
 class Tool;
 class Workshop;
 
-class Worker {
-private:
-	std::string			_name;
-	t_position			_coordonnee; 
-	t_statictic			_stat;		 
-	std::list<Tool*>	_tools;		 
-	std::list<Workshop*> _workshops; 
+class Worker
+{
+	
+	private:
 
-public:
-	Worker(std::string const& name);
-	~Worker();
+		std::string _name;
+		t_position _coordonnee;
+		t_statictic _stat;
+		std::list<Tool *> _tools;
+		std::list<Workshop *> _workshops;
 
-	void giveTool(Tool* tool);
-	void takeTool(Tool* tool);
-	void useTools();
+	public:
 
-	void registerToWorkshop(Workshop* workshop); 
-	void leaveWorkshop(Workshop* workshop);
+		Worker(std::string const &name);
+		~Worker();
 
-	void _internal_addWorkshop(Workshop* workshop);
-	void _internal_removeWorkshop(Workshop* workshop);
+		void giveTool(Tool *tool);
+		void takeTool(Tool *tool);
+		void useTools();
 
-	void work();
+		void registerToWorkshop(Workshop *workshop);
+		void leaveWorkshop(Workshop *workshop);
 
-	std::string const& getName() const;
+		void _internal_addWorkshop(Workshop *workshop);
+		void _internal_removeWorkshop(Workshop *workshop);
+
+		void work();
+
+		std::string const &getName() const;
 };
 
 #endif

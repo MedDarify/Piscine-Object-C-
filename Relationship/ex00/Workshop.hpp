@@ -4,23 +4,19 @@
 #include <iostream>
 #include <list>
 
-class Worker; // Forward declaration [cite: 100]
-
-// IV.4 Association [cite: 103]
+class Worker; 
 class Workshop {
 private:
-	std::list<Worker*> _workers; // [cite: 100]
+	std::list<Worker*> _workers; 
 
 public:
 	Workshop();
 	~Workshop();
 
-	// --- Association Methods ---
-	void registerWorker(Worker* worker); // [cite: 104]
-	void releaseWorker(Worker* worker); // [cite: 104]
+	void registerWorker(Worker* worker); 
+	void releaseWorker(Worker* worker); 
 
-	// --- Work Method ---
-	void executeWorkDay(); // [cite: 107]
+	void executeWorkDay();
 };
 
 #endif

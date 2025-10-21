@@ -4,7 +4,8 @@
 #include "Hammer.hpp"
 #include <iostream>
 
-void demonstrateComposition() {
+void demonstrateComposition()
+{
 	std::cout << "\n┌────────────────────────────────────────────┐\n";
 	std::cout << "│          1. COMPOSITION DEMO               │\n";
 	std::cout << "└────────────────────────────────────────────┘\n";
@@ -13,13 +14,14 @@ void demonstrateComposition() {
 	std::cout << "🧹 'Bob' is now leaving scope...\n";
 }
 
-void demonstrateAggregation() {
+void demonstrateAggregation()
+{
 	std::cout << "\n┌────────────────────────────────────────────┐\n";
 	std::cout << "│     2. AGGREGATION & INHERITANCE DEMO      │\n";
 	std::cout << "└────────────────────────────────────────────┘\n";
 	std::cout << "🛠️  Creating tools on heap...\n";
-	Tool* shovel = new Shovel();
-	Tool* hammer = new Hammer();
+	Tool *shovel = new Shovel();
+	Tool *hammer = new Hammer();
 
 	{
 		std::cout << "\n╭───────────────────────────╮\n";
@@ -57,15 +59,16 @@ void demonstrateAggregation() {
 	delete hammer;
 }
 
-void demonstrateAssociation() {
+void demonstrateAssociation()
+{
 	std::cout << "\n┌────────────────────────────────────────────┐\n";
 	std::cout << "│             3. ASSOCIATION DEMO            │\n";
 	std::cout << "└────────────────────────────────────────────┘\n";
 	std::cout << "🏭 Creating Workers and Workshops...\n";
-	Worker* charlie = new Worker("Charlie");
-	Worker* diana = new Worker("Diana");
-	Workshop* mainWorkshop = new Workshop();
-	Workshop* secondaryWorkshop = new Workshop();
+	Worker *charlie = new Worker("Charlie");
+	Worker *diana = new Worker("Diana");
+	Workshop *mainWorkshop = new Workshop();
+	Workshop *secondaryWorkshop = new Workshop();
 
 	mainWorkshop->registerWorker(charlie);
 	mainWorkshop->registerWorker(diana);
@@ -86,7 +89,8 @@ void demonstrateAssociation() {
 	delete secondaryWorkshop;
 }
 
-int main() {
+int main()
+{
 	std::cout << "\n============================================\n";
 	std::cout << "        OBJECT RELATIONSHIP DEMONSTRATION    \n";
 	std::cout << "============================================\n";
