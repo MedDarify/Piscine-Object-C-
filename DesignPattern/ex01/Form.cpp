@@ -24,6 +24,7 @@ void CourseFinishedForm::execute()
 
 NeedMoreClassRoomForm::NeedMoreClassRoomForm() : Form(NeedMoreClassRoom)
 {
+    
 }
 
 void NeedMoreClassRoomForm::execute()

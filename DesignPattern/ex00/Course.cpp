@@ -2,7 +2,7 @@
 
 
 Course::Course(std::string p_name) 
-    : _name(p_name), _responsable(0), _numberOfClassToGraduate(10), _maximumNumberOfStudent(30)
+    : _name(p_name)
 {
 }
 
