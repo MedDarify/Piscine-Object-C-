@@ -6,6 +6,8 @@
 #include <stdexcept>
 #include "account.hpp"
 
+class Account;
+
 class Bank
 {
 private:
@@ -16,7 +18,7 @@ private:
 
 public:
     Bank(int liquidity = 0)
-        : _liquidity(liquidity), _nextId(0)
+        : _liquidity(liquidity), _nextId(1)
     {
         if (liquidity < 0)
             throw std::invalid_argument("Bank liquidity cannot be negative");
@@ -39,7 +41,13 @@ public:
 
     Account *createAccount(int value)
     {
-        Account *client = new Account(_nextId++, value);
+        if (value < 0)
+            throw std::invalid_argument("value not accepeted for create an account");
+        int commission = static_cast<int>(value * COMMISSION_RATE);
+        int initialAmount = value - commission;
+        std::cout << "initial amount ==> " << initialAmount << std::endl;
+        Account *client = new Account(_nextId++, initialAmount);
+        _liquidity += initialAmount;
         _clientAccounts.push_back(client);
         return client;
     }
@@ -50,7 +58,13 @@ public:
             throw std::invalid_argument("Deposit amount must be positive");
         int commission = static_cast<int>(amount * COMMISSION_RATE);
         client._initialAmount += (amount - commission);
-        _liquidity += commission;
+        std::cout         << "┌───────────────────────────────────────┐\n"
+                          << "│     Account Deletion Log              │\n"
+                          << "├───────────────────────────────────────┤\n"
+                          << "│ Account ID : " << client._initialAmount << "\n"
+                          << "│ Status     : ✅ Successfully deposit  │\n"
+                          << "└───────────────────────────────────────┘\n";
+        _liquidity += amount;
     }
 
     void deleteAccountById(int id)
@@ -60,6 +74,7 @@ public:
         {
             if ((*it)->getId() == id)
             {
+                _liquidity -= (*it)->getAmount();
                 delete *it;
                 it = _clientAccounts.erase(it);
                 std::cout << "┌───────────────────────────────────────┐\n"
@@ -89,7 +104,7 @@ public:
         if (amount > client._initialAmount)
             throw std::runtime_error("Insufficient funds");
         client._initialAmount -= amount;
-        _liquidity += amount;
+        _liquidity -= amount;
     }
 
     void giveLoan(Account &client, int amount)

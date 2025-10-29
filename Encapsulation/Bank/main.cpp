@@ -9,14 +9,17 @@ int main()
 		Bank bank(1000);
 		Account* accountA = bank.createAccount(100);
 		Account* accountB = bank.createAccount(100);
+		Account* accountC =  bank.createAccount(1500);
 
-		bank.deposit(*accountA, 400);
+		
+		bank.deposit(*accountA, 1400);
 		bank.giveLoan(*accountB, 200);
 		bank.withdraw(*accountA, 50);
 
 		std::cout << "------ Accounts -------" << std::endl;
 		std::cout << *accountA << std::endl;
 		std::cout << *accountB << std::endl;
+		std::cout << *accountC << std::endl;
 
 		std::cout << "----- bank before delete -----" << std::endl;
 		std::cout << bank << std::endl;
