@@ -2,9 +2,7 @@
 #define TRIANGLE_HPP
 
 #include "shape.hpp"
-// #include <cmath>
 
-// We implement a Right-Angled Triangle for simplicity
 class Triangle : public Shape
 {
 private:
