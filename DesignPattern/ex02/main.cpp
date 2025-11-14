@@ -1,14 +1,10 @@
 #include <iostream>
 
 #include "Course.hpp"
-#include "singetons.hpp"
+#include "singletons.hpp"
 #include "Person.hpp"
 #include "Room.hpp"
 #include "Form.hpp"
-#include    "Staff.hpp"
-#include    "Student.hpp"
-#include    "Professor.hpp"
-#include    "Secretary.hpp"
 
 typedef SingletonList<Student> StudentList;
 typedef SingletonList<Staff> StaffList;
@@ -58,7 +54,7 @@ int main()
     std::cout << "--- Retrieving from Lists ---" << std::endl;
 
     std::cout << "Students:" << std::endl;
-    const std::vector<Student *> &students = StudentList::getInstance().getList();
+    const std::vector<Student *> &students = sList.getList();
     for (std::size_t i = 0; i < students.size(); ++i)
     {
         std::cout << " - " << students[i]->getName() << std::endl;

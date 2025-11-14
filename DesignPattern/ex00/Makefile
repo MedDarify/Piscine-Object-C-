@@ -5,7 +5,20 @@
 NAME        = Preparation
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
-SRC         = main.cpp Course.cpp Form.cpp Person.cpp Room.cpp
+SRC         =	Course.cpp\
+				CourseFinishedForm.cpp\
+				Form.cpp\
+				Headmaster.cpp\
+				main.cpp\
+				NeedCourseCreationForm.cpp\
+				NeedMoreClassRoomForm.cpp\
+				Person.cpp\
+				Professor.cpp\
+				Room.cpp\
+				Secretary.cpp\
+				Staff.cpp\
+				Student.cpp\
+				SubscriptionToCourseForm.cpp
 OBJ         = $(SRC:.cpp=.o)
 
 # **************************************************************************** #
@@ -30,7 +43,6 @@ clean:
 fclean: clean
 	@echo "🗑️  Removing binary..."
 	rm -f $(NAME)
-	rm -f app.log
 
 re: fclean all
 

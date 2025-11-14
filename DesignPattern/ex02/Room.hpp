@@ -11,7 +11,7 @@ class Room
 private:
     long long ID;
     std::vector<Person *> _occupants;
-    static long long _nextId;
+    static long long _nextId; 
 
 public:
     Room();

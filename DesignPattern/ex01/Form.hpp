@@ -11,7 +11,7 @@ enum FormType
 
 class Form
 {
-private:
+protected:
     FormType _formType;
     bool _isSigned;
 
@@ -22,34 +22,15 @@ public:
     virtual void execute() = 0;
     void sign() { _isSigned = true; }
     bool isSigned() const { return _isSigned; }
+    
 };
 
-class CourseFinishedForm : public Form
-{
-public:
-    CourseFinishedForm();
-    void execute();
-};
 
-class NeedMoreClassRoomForm : public Form
-{
-public:
-    NeedMoreClassRoomForm();
-    void execute();
-};
 
-class NeedCourseCreationForm : public Form
-{
-public:
-    NeedCourseCreationForm();
-    void execute();
-};
 
-class SubscriptionToCourseForm : public Form
-{
-public:
-    SubscriptionToCourseForm();
-    void execute();
-};
+
+
+
+
 
 #endif

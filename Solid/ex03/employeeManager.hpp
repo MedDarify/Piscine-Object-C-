@@ -1,5 +1,5 @@
-#ifndef EMPLOYEEMANAGEMENT_HPP
-#define EMPLOYEEMANAGEMENT_HPP
+#ifndef EMPLOYEEMANAGER_HPP
+#define EMPLOYEEMANAGER_HPP
 
 #include "employee.hpp"
 #include <vector>

@@ -1,0 +1,56 @@
+=============================== concept ======================================
+
+==> Sign in form Bruteforce
+
+How to exploit the breach
+From there we could perform any operation we want inside the application, 
+authenticated as the hacked user.
+
+For example for mailBox account we could send 
+emails impersonating the hacked user.
+
+And overall we could even change the user's password 
+depending on the application security rigor.
+
+How to avoid the breach
+Several solution or good practices exist, such as limiting 
+the amount of request from the same IP or adding a recaptcha usage on the form.
+
+2FA authentication such a google Authenticator, requesting the user to 
+validate it's identity on one of his other devices.
+
+==> Directory traversal breach
+How to exploit the breach
+By being able to browse the server file system the hacker could 
+steal any kind of sensitive information. 
+He could also be able to execute previously uploaded 
+script inside the server file tree.
+
+See file upload breach →
+
+How to avoid the breach
+The solutions to avoid this breach are quite similar to those for 
+Redirect security breach. The server should not build a path to local 
+filesystem with user-supplied input.
+
+If it's necessary for the application to allow users to access files on 
+the filesystem of the server, the server should validate the path sent 
+by the user, to only allow access to authorized directories.
+
+How to exploit the breach
+By being able to browse the server file system the hacker could steal 
+any kind of sensitive information. 
+He could also be able to execute previously uploaded script inside the server file tree.
+
+See file upload breach →
+
+How to avoid the breach
+The solutions to avoid this breach are quite similar to those for 
+Redirect security breach. The server should not build a path to local 
+filesystem with user-supplied input.
+
+If it's necessary for the application to allow users to access files on the 
+filesystem of the server, the server should validate the path sent by the user, 
+to only allow access to authorized directories.
+
+==> Htpasswd Admin Authentication Breach

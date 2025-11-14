@@ -1,8 +1,9 @@
 #include "Room.hpp"
-#include "Person.hpp"
-#include "Course.hpp"
+#include "Person.hpp" 
+#include "Course.hpp" 
 #include <iostream>
-#include <algorithm>
+#include <algorithm> 
+
 long long Room::_nextId = 0;
 
 Room::Room()
@@ -14,20 +15,20 @@ Room::~Room()
 {
 }
 
-bool Room::canEnter(Person *p_person)
+bool Room::canEnter(Person* p_person)
 {
-    (void)p_person;
-    return true;
+    (void)p_person; 
+    return true; 
 }
 
-void Room::enter(Person *p_person)
+void Room::enter(Person* p_person)
 {
     _occupants.push_back(p_person);
 }
 
-void Room::exit(Person *p_person)
+void Room::exit(Person* p_person)
 {
-    std::vector<Person *>::iterator it = std::find(_occupants.begin(), _occupants.end(), p_person);
+    std::vector<Person*>::iterator it = std::find(_occupants.begin(), _occupants.end(), p_person);
     if (it != _occupants.end())
     {
         _occupants.erase(it);
@@ -43,11 +44,12 @@ void Room::printOccupant()
     }
 }
 
+
 Classroom::Classroom() : Room(), _currentRoom(0)
 {
 }
 
-void Classroom::assignCourse(Course *p_course)
+void Classroom::assignCourse(Course* p_course)
 {
     _currentRoom = p_course;
 }
